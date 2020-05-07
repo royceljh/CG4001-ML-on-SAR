@@ -17,9 +17,9 @@ import seaborn
 
 from ground_truth import RosebelPixelClass3, GroundTruthBoundaries
 
-PRODUCT_PATH = "F:\FYP\Processed_Data\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
-SURINAME_GROUND_TRUTH_PINS_TEXT_FILE_PATH = "F:\FYP\CG4001\esa_data_products_snap_processed\suriname_rosebel_all\ground_truth_vector_files\pin_exports\pin.txt"
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
+SURINAME_GROUND_TRUTH_PINS_TEXT_FILE_PATH = "..\\data\\pins\\rosebel_grd_pin.txt"
+MODEL_PATH = "..\\data\\models\\"
 
 def print_duration_string(start_time):
     t = time.time() - start_time
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     scaler = StandardScaler()
     scaler.fit(VV_VH_features)
     VV_VH_features = scaler.transform(VV_VH_features)
-    # joblib.dump(scaler, CLUSTERING_PATH + "KMeans_scaler.joblib")
+    # joblib.dump(scaler, MODEL_PATH + "KMeans_scaler.joblib")
 
     image_width = bands[0].getRasterWidth()
     image_height = bands[0].getRasterHeight()
@@ -102,19 +102,19 @@ if __name__ == "__main__":
         # model = KMeans(n_clusters=number_of_clusters)
         # model.fit(VV_VH_features)
         # clusassign = model.predict(VV_VH_features)
-        # np.save(CLUSTERING_PATH + "clusassign_"+ header + ".npy", clusassign)
-        # joblib.dump(model, CLUSTERING_PATH + "KMeans_40_model.joblib")
+        # np.save(MODEL_PATH + "clusassign_"+ header + ".npy", clusassign)
+        # joblib.dump(model, MODEL_PATH + "KMeans_40_model.joblib")
         print_duration_string(start_time)
         exit(1)
 
         print("Loading persisted clustering results")
-        clusassign = np.load(CLUSTERING_PATH + "clusassign_"+ header + ".npy")
+        clusassign = np.load(MODEL_PATH + "clusassign_"+ header + ".npy")
 
         print_duration_string(start_time)
 
         orig_clusassign = np.reshape(clusassign, (image_height, image_width))
         imgplot = plt.imshow(orig_clusassign)
-        imgplot.write_png(CLUSTERING_PATH + "orig_clusimage_" + header + ".png")
+        imgplot.write_png(MODEL_PATH + "orig_clusimage_" + header + ".png")
 
         # Calculating yield
         print("Calculating assigned cluster yield based on ground truth labels")
@@ -216,7 +216,7 @@ if __name__ == "__main__":
         clusassign = np.reshape(clusassign, (image_height, image_width))
         print(clusassign.shape)
         imgplot = plt.imshow(clusassign, cmap='brg')
-        imgplot.write_png(CLUSTERING_PATH + "clusimage_" + header + ".png")
+        imgplot.write_png(MODEL_PATH + "clusimage_" + header + ".png")
 
         polygon_labels = []
         polygon_clusassign = []
@@ -230,7 +230,7 @@ if __name__ == "__main__":
         classification_report = metrics.classification_report(polygon_labels, polygon_clusassign)
 
         print("Writing results to file")
-        f = open(CLUSTERING_PATH + "report_" + header + ".txt", "w+")
+        f = open(MODEL_PATH + "report_" + header + ".txt", "w+")
         f.write("Total labelled water pixel count:" +
               str(len(np.argwhere(np.array(labels) == RosebelPixelClass3.water.value))) + '\n')
         f.write("Total labelled mines pixel count:" +
@@ -261,7 +261,7 @@ if __name__ == "__main__":
         plt.xlabel('Predicted Pixel Class')
         accuracy_title = "Accuracy Score: {0}".format(accuracy_score)
         plt.title(accuracy_title, size=15)
-        plt.savefig(CLUSTERING_PATH + "confusion_matrix_" + header + ".png", bbox_inches='tight')
+        plt.savefig(MODEL_PATH + "confusion_matrix_" + header + ".png", bbox_inches='tight')
 
         print_duration_string(start_time)
 

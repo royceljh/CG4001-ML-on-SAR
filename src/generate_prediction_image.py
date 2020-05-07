@@ -16,16 +16,16 @@ from pykml import parser
 # Self Defined Modules
 from ground_truth import RosebelPixelClass3, GroundTruthBoundaries
 
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1B_IW_GRDH_1SDV_20170902T215854_20170902T215945_007219_00CB9B_FFA6_Orb_NR_Cal_Asm_Spk_TF_TC.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_SLC\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_NR_Cal_Deb_Spk_TC_5m.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_SLC\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_TNR_Cal_deb_Spk_TF_TC_5m_Gamma.dim"
-PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\\Temp\Subset_S1A_IW_GRDH_1SDV_20190917T092852_20190917T092917_029059_034C31_1942_Orb_NR_Cal_TF_Spk_TC.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1B_IW_GRDH_1SDV_20170902T215854_20170902T215945_007219_00CB9B_FFA6_Orb_NR_Cal_Asm_Spk_TF_TC.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_SLC\\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_NR_Cal_Deb_Spk_TC_5m.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_SLC\\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_TNR_Cal_deb_Spk_TF_TC_5m_Gamma.dim"
+PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Temp\\Subset_S1A_IW_GRDH_1SDV_20190917T092852_20190917T092917_029059_034C31_1942_Orb_NR_Cal_TF_Spk_TC.dim"
 
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Obuasi\\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
 
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+MODEL_PATH = "..\\data\\models\\"
 
 def print_duration_string(start_time):
     t = time.time() - start_time
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     print("Importing Random Forest model")
     rf_model = joblib.load(
-        CLUSTERING_PATH + "rf_R_O_M_g_model_balanced.joblib")   # rf_R_O_M_g_model_balanced / rf_rosebel_water_model_VV_VH / rf_rosebel_slc_g_model / rf_rosebel_slc_g_water_model
+        MODEL_PATH + "rf_R_O_M_g_model_balanced.joblib")   # rf_R_O_M_g_model_balanced / rf_rosebel_water_model_VV_VH / rf_rosebel_slc_g_model / rf_rosebel_slc_g_water_model
     print("Predicting rf assignments")
     rf_predictions = rf_model.predict(rf_features).astype(int)
     # rf_predictions_proba = rf_model.predict_proba(rf_features)

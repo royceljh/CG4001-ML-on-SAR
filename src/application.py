@@ -16,39 +16,39 @@ from pykml import parser
 # Self Defined Modules
 from ground_truth import RosebelPixelClass3, GroundTruthBoundaries
 
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-# CLASS_LABEL_FILENAME = "rosebel_3_class_labels_original.npy"
-# CLASS_LABEL_FILENAME = "rosebel_2_class_labels.npy"
-# SAVE_DIR = "F:\FYP\Processed_Data\Rosebel_GRD\\"
-# PIN_EXPORT_FILEPATH = "F:\FYP\CG4001\esa_data_products_snap_processed\suriname_rosebel_all\ground_truth_vector_files\pin_exports\pin.txt"
-# PIN_EXPORT_FILEPATH = "F:\\FYP\\Processed_Data\\Rosebel_GRD\\rosebel_pins.txt"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\rosebel_grd_3_class_labels_original.npy"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\rosebel_grd_2_class_labels.npy"
+# SAVE_DIR = "..\\results\\Rosebel_GRD\\"
+# PIN_EXPORT_FILEPATH = "..\\data\\pins\\rosebel_grd_pins.txt"
 
-PRODUCT_PATH = "F:\FYP\Processed_Data\Rosebel_SLC\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_TNR_Cal_deb_Spk_TF_TC_5m_Gamma.dim"
-# CLASS_LABEL_FILENAME = "rosebel_3_class_labels.npy"
-CLASS_LABEL_FILENAME = "rosebel_2_class_labels.npy"
-SAVE_DIR = "F:\FYP\Processed_Data\Rosebel_SLC\\"
-PIN_EXPORT_FILEPATH = "F:\\FYP\\Processed_Data\\Rosebel_SLC\\rosebel_pins.txt"
+PRODUCT_PATH = "..\\data\\processed\\Rosebel_SLC\\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_TNR_Cal_deb_Spk_TF_TC_5m_Gamma.dim"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\rosebel_slc_3_class_labels.npy"
+CLASS_LABEL_FILENAME = "..\\data\\labels\\rosebel_slc_2_class_labels.npy"
+SAVE_DIR = "..\\results\\Rosebel_SLC\\"
+PIN_EXPORT_FILEPATH = "..\\data\\pins\\rosebel_slc_pins.txt"
 
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TC.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-# CLASS_LABEL_FILENAME = "obuasi_3_class_labels_original.npy"
-# SAVE_DIR = "F:\FYP\Processed_Data\Obuasi\\"
-# PIN_EXPORT_FILEPATH = "C:\\Users\\royce\\Desktop\\obuasi_pins.txt"
+# PRODUCT_PATH = "..\\data\\processed\\Obuasi\\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TC.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Obuasi\\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\obuasi_3_class_labels_original.npy"
+# SAVE_DIR = "..\\results\\Obuasi\\"
+# PIN_EXPORT_FILEPATH = "..\\data\\pins\\obuasi_pins.txt"
 
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Merian\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TC.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\Merian\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-# CLASS_LABEL_FILENAME = "merian_3_class_labels_original.npy"
-# SAVE_DIR = "F:\FYP\Processed_Data\Merian\\"
-# PIN_EXPORT_FILEPATH = "C:\\Users\\royce\\Desktop\\merian_pins.txt"
+# PRODUCT_PATH = "..\\data\\processed\\Merian\\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TC.dim"
+# PRODUCT_PATH = "..\\data\\processed\\Merian\\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\merian_3_class_labels_original.npy"
+# SAVE_DIR = "..\\results\\Merian\\"
+# PIN_EXPORT_FILEPATH = "..\\data\\pins\\merian_pins.txt"
 
-# PRODUCT_PATH = "F:\FYP\Processed_Data\LaPampa\Subset_S1A_IW_GRDH_1SDV_20160909T101448_20160909T101513_012974_01487C_E55B_Orb_NR_Cal_Spk_TC.dim"
-# PRODUCT_PATH = "F:\FYP\Processed_Data\LaPampa\Subset_S1A_IW_GRDH_1SDV_20160909T101448_20160909T101513_012974_01487C_E55B_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-# CLASS_LABEL_FILENAME = "lapampa_3_class_labels_original.npy"
-# SAVE_DIR = "F:\FYP\Processed_Data\LaPampa\\"
-# PIN_EXPORT_FILEPATH = "C:\\Users\\royce\\Desktop\\lapampa_pins.txt"
+# PRODUCT_PATH = "..\\data\\processed\\LaPampa\\Subset_S1A_IW_GRDH_1SDV_20160909T101448_20160909T101513_012974_01487C_E55B_Orb_NR_Cal_Spk_TC.dim"
+# PRODUCT_PATH = "..\\data\\processed\\LaPampa\\Subset_S1A_IW_GRDH_1SDV_20160909T101448_20160909T101513_012974_01487C_E55B_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\lapampa_3_class_labels_original.npy"
+# SAVE_DIR = "..\\results\\LaPampa\\"
+# PIN_EXPORT_FILEPATH = "..\\data\\pins\\lapampa_pins.txt"
 
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+MODEL_PATH = "..\\data\\models\\"
+LABELS_DIR = "..\\data\\labels\\"
 POTENTIAL_NOISE_LABEL = 0
 
 def print_duration_string(start_time):
@@ -157,9 +157,9 @@ if __name__ == "__main__":
     print("Processing Ground Truth")
     gt = GroundTruthBoundaries(PIN_EXPORT_FILEPATH, RosebelPixelClass3)
     image_label_array = gt.get_labels_npy(image_width, number_of_pixels)
-    np.save(SAVE_DIR + CLASS_LABEL_FILENAME, image_label_array)
+    np.save(LABELS_DIR + CLASS_LABEL_FILENAME, image_label_array)
     exit()
-    labels = np.load(SAVE_DIR + CLASS_LABEL_FILENAME)
+    labels = np.load(LABELS_DIR + CLASS_LABEL_FILENAME)
 
     features = np.array(features)
     print("Preparing Features for Logistic Regression, Random Forest, KMeans")
@@ -175,8 +175,8 @@ if __name__ == "__main__":
     # print(kmeans_features.shape)
 
     # print("Importing KMeans model")
-    # kmeans_model = joblib.load(CLUSTERING_PATH + "KMeans_40_model.joblib")
-    # # kmeans_scaler = joblib.load(CLUSTERING_PATH + "KMeans_scaler.joblib")
+    # kmeans_model = joblib.load(MODEL_PATH + "KMeans_40_model.joblib")
+    # # kmeans_scaler = joblib.load(MODEL_PATH + "KMeans_scaler.joblib")
     # kmeans_scaler = StandardScaler()
     # kmeans_scaler.fit(kmeans_features)
     # kmeans_features = kmeans_scaler.transform(kmeans_features)
@@ -186,8 +186,8 @@ if __name__ == "__main__":
     # print(str(number_of_clusters) + " clusters found")
 
     # print("Importing Logistic Regression model")
-    # lr_model = joblib.load(CLUSTERING_PATH + "multi_lr_model.joblib")     # lr_model.joblib
-    # lr_scaler = joblib.load(CLUSTERING_PATH + "multi_std_scaler.joblib")  # std_scaler.joblib
+    # lr_model = joblib.load(MODEL_PATH + "multi_lr_model.joblib")     # lr_model.joblib
+    # lr_scaler = joblib.load(MODEL_PATH + "multi_std_scaler.joblib")  # std_scaler.joblib
     # # lr_scaler = StandardScaler()
     # # lr_scaler.fit(lr_features)
     # lr_features = lr_scaler.transform(lr_features)
@@ -196,7 +196,7 @@ if __name__ == "__main__":
     # print(lr_predictions)
 
     print("Importing Random Forest model")
-    rf_model = joblib.load(CLUSTERING_PATH + "rf_R_O_M_g_model_balanced.joblib")      # clf / multi_rf_model / rf_R_O_M_model_balanced / rf_Rosebel_Obuasi_model
+    rf_model = joblib.load(MODEL_PATH + "rf_R_O_M_g_model_balanced.joblib")      # clf / multi_rf_model / rf_R_O_M_model_balanced / rf_Rosebel_Obuasi_model
     print("Predicting rf assignments")
     rf_predictions = rf_model.predict(rf_features).astype(int)
     print(rf_predictions)

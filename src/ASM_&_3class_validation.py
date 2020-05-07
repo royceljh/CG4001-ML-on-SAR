@@ -15,14 +15,14 @@ from sklearn import metrics
 # Self Defined Modules
 from ground_truth import GroundTruthBoundaries
 
-# ROSESEL_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\ASM\\"
+# ROSESEL_PATH = "..\\data\\processed\\Rosebel_GRD\ASM\\"
 # PRODUCT_NAME = "Collocated_S1A_20190917T092852_S2_20190922T141049_uint8scale.dim"
-# NDWI_PRED_PATH = "ndwi_pred_0.5threshold_corrected.npy"
-# LAND_WATER_PRED_PATH = "land_water_pred_0.5threshold_corrected.npy"
+# NDWI_PRED_PATH = "..\\data\\labels\\ndwi_pred_0.5threshold_corrected.npy"
+# LAND_WATER_PRED_PATH = "..\\data\\labels\\land_water_pred_0.5threshold_corrected.npy"
 
-MERIAN_PATH = "F:\FYP\Processed_Data\Merian\\"
+MERIAN_PATH = "..\\data\\processed\\Merian\\"
 PRODUCT_NAME = "Merian_Collocated_S1B_20190830T215119_S2B_20190902_UINT8_Corrected.dim"
-LAND_WATER_PRED_PATH = "Merian_Land_Water_20190902_pred_0.5_threshold.npy"
+LAND_WATER_PRED_PATH = "..\\data\\labels\\Merian_Land_Water_20190902_pred_0.5_threshold.npy"
 
 WINDOW_SIZE = 16
 water_pred_no = 1
@@ -30,9 +30,9 @@ land_pred_no = 2
 forest_pred_no = 3
 water_threshold = 0.01
 forest_threshold = 1
-PIN_EXPORT_FILEPATH = "F:\FYP\Processed_Data\Rosebel_GRD\ASM\\asm_pins.txt"
-CLASS_LABEL_FILENAME = "rosebel_asm_class_labels.npy"
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+PIN_EXPORT_FILEPATH = "..\\data\\rosebel_asm_pins.txt"
+CLASS_LABEL_FILENAME = "..\\data\\labels\\rosebel_asm_class_labels.npy"
+MODEL_PATH = "..\\data\\models\\"
 
 
 def print_duration_string(start_time):
@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     # print("Importing Random Forest model")
     # rf_model = joblib.load(
-    #     CLUSTERING_PATH + "rf_R_O_M_g_model_balanced.joblib")
+    #     MODEL_PATH + "rf_R_O_M_g_model_balanced.joblib")
     # print("Predicting rf assignments")
     # rf_predictions = rf_model.predict(rf_features).astype(int)
     # np.save(MERIAN_PATH + "rf_ROM_g_model_prediction.npy", rf_predictions)

@@ -21,22 +21,22 @@ from ground_truth import RosebelPixelClass3, GroundTruthBoundaries
 import main as m
 import utility as util
 
-# PRODUCT_1_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
-# PRODUCT_1_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-PRODUCT_1_PATH = "F:\FYP\Processed_Data\Rosebel_SLC\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_TNR_Cal_deb_Spk_TF_TC_5m_Gamma.dim"
-# PRODUCT_1_LABELS_PATH = "labels/rosebel_3_class_labels_original.npy"
-# PRODUCT_1_LABELS_PATH = "F:\\FYP\\Processed_Data\\Rosebel_GRD\\rosebel_2_class_labels.npy"
-# PRODUCT_1_LABELS_PATH = "F:\\FYP\\Processed_Data\\Rosebel_SLC\\rosebel_3_class_labels.npy"
-PRODUCT_1_LABELS_PATH = "F:\\FYP\\Processed_Data\\Rosebel_SLC\\rosebel_2_class_labels.npy"
+# PRODUCT_1_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
+# PRODUCT_1_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+PRODUCT_1_PATH = "..\\data\\processed\\Rosebel_SLC\\Subset_S1A_IW_SLC__1SDV_20170903T092838_20170903T092905_018209_01E9A9_63BD_Orb_TNR_Cal_deb_Spk_TF_TC_5m_Gamma.dim"
+# PRODUCT_1_LABELS_PATH = "..\\data\\labels\\rosebel_grd_3_class_labels_original.npy"
+# PRODUCT_1_LABELS_PATH = "..\\data\\labels\\rosebel_grd_2_class_labels.npy"
+# PRODUCT_1_LABELS_PATH = "..\\data\\labels\\rosebel_slc_3_class_labels.npy"
+PRODUCT_1_LABELS_PATH = "..\\data\\labels\\rosebel_slc_2_class_labels.npy"
 
-# PRODUCT_2_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TC.dim"
-PRODUCT_2_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-PRODUCT_2_LABELS_PATH = "F:\FYP\Processed_Data\Obuasi\obuasi_3_class_labels_original.npy"
+# PRODUCT_2_PATH = "..\\data\\processed\\Obuasi\\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TC.dim"
+PRODUCT_2_PATH = "..\\data\\processed\\Obuasi\\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+PRODUCT_2_LABELS_PATH = "..\\data\\labels\\obuasi_3_class_labels_original.npy"
 
-# PRODUCT_3_PATH = "F:\FYP\Processed_Data\Merian\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TC.dim"
-PRODUCT_3_PATH = "F:\FYP\Processed_Data\Merian\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-PRODUCT_3_LABELS_PATH = "F:\FYP\Processed_Data\Merian\merian_3_class_labels_original.npy"
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+# PRODUCT_3_PATH = "..\\data\\processed\\Merian\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TC.dim"
+PRODUCT_3_PATH = "..\\data\\processed\\Merian\Subset_S1B_IW_GRDH_1SDV_20170112T215059_20170112T215124_003821_00691E_8AF1_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+PRODUCT_3_LABELS_PATH = "..\\data\\labels\\merian_3_class_labels_original.npy"
+MODEL_PATH = "..\\data\\models\\"
 
 def print_duration_string(start_time):
     t = time.time() - start_time
@@ -157,8 +157,8 @@ if __name__ == "__main__":
     # print("\nConfusion Matrix:\n", confusion_matrix)
     # util.print_translate_confusion_matrix(confusion_matrix, RosebelPixelClass3, lambda x: x + 1)
 
-    # joblib.dump(lr_model, CLUSTERING_PATH + "multi_lr_model.joblib")
-    # joblib.dump(fitted_scaler, CLUSTERING_PATH + "multi_std_scaler.joblib")
+    # joblib.dump(lr_model, MODEL_PATH + "multi_lr_model.joblib")
+    # joblib.dump(fitted_scaler, MODEL_PATH + "multi_std_scaler.joblib")
 
     # Evaluate model
     print("Evaluating Random Forest Model with Test Data")
@@ -175,5 +175,5 @@ if __name__ == "__main__":
     print("\nConfusion Matrix:\n", confusion_matrix)
     util.print_translate_confusion_matrix(confusion_matrix, RosebelPixelClass3, lambda x: x + 1)
 
-    joblib.dump(rf_model, CLUSTERING_PATH + "rf_rosebel_slc_g_water_model.joblib")
+    joblib.dump(rf_model, MODEL_PATH + "rf_rosebel_slc_g_water_model.joblib")
     print_duration_string(start_time)

@@ -16,9 +16,9 @@ import joblib
 
 from ground_truth import RosebelPixelClass3, GroundTruthBoundaries
 
-PRODUCT_PATH = "F:\FYP\Processed_Data\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
-SURINAME_GROUND_TRUTH_PINS_TEXT_FILE_PATH = "F:\FYP\CG4001\esa_data_products_snap_processed\suriname_rosebel_all\ground_truth_vector_files\pin_exports\pin.txt"
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+PRODUCT_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
+SURINAME_GROUND_TRUTH_PINS_TEXT_FILE_PATH = "..\\data\\pins\\rosebel_grd_pins.txt"
+MODEL_PATH = "..\\data\\models\\"
 POTENTIAL_NOISE_LABEL = 0
 
 def print_duration_string(start_time):
@@ -67,8 +67,8 @@ if __name__ == "__main__":
     print(kmeans_features.shape)
 
     print("Importing KMeans model")
-    kmeans_model = joblib.load(CLUSTERING_PATH + "KMeans_40_model.joblib")
-    kmeans_scaler = joblib.load(CLUSTERING_PATH + "KMeans_scaler.joblib")
+    kmeans_model = joblib.load(MODEL_PATH + "KMeans_40_model.joblib")
+    kmeans_scaler = joblib.load(MODEL_PATH + "KMeans_scaler.joblib")
     kmeans_features = kmeans_scaler.transform(kmeans_features)
     print("Predicting cluster assignments")
     clusassign = kmeans_model.predict(kmeans_features)
@@ -76,8 +76,8 @@ if __name__ == "__main__":
     print(str(number_of_clusters) + " clusters found")
 
     print("Importing Logistic Regression model")
-    lr_model = joblib.load(CLUSTERING_PATH + "multi_lr_model.joblib")     # multi_lr_model.joblib
-    lr_scaler = joblib.load(CLUSTERING_PATH + "multi_std_scaler.joblib")    # multi_std_scaler.joblib
+    lr_model = joblib.load(MODEL_PATH + "multi_lr_model.joblib")     # multi_lr_model.joblib
+    lr_scaler = joblib.load(MODEL_PATH + "multi_std_scaler.joblib")    # multi_std_scaler.joblib
     lr_features = lr_scaler.transform(lr_features)
     print("Predicting lr assignments")
     lr_predictions = lr_model.predict(lr_features)
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     # exit()
 
     # print("Importing Random Forest model")
-    # rf_model = joblib.load(CLUSTERING_PATH + "multi_rf_model.joblib")  # clf.joblib
+    # rf_model = joblib.load(MODEL_PATH + "multi_rf_model.joblib")  # clf.joblib
     # print("Predicting rf assignments")
     # rf_predictions = rf_model.predict(rf_features).astype(int)
     # print(rf_predictions)
@@ -147,14 +147,14 @@ if __name__ == "__main__":
     clusassign = np.reshape(clusassign, (image_height, image_width))
     print(clusassign.shape)
     imgplot = plt.imshow(clusassign, cmap='brg')
-    imgplot.write_png(CLUSTERING_PATH + "ensemble_clusimage_reduce_" + str(number_of_clusters) + ".png")
+    imgplot.write_png(MODEL_PATH + "ensemble_clusimage_reduce_" + str(number_of_clusters) + ".png")
 
     confusion_matrix = metrics.confusion_matrix(polygon_labels, polygon_clusassign)
     accuracy_score = metrics.accuracy_score(polygon_labels, polygon_clusassign)
     classification_report = metrics.classification_report(polygon_labels, polygon_clusassign)
 
     print("Writing results to file")
-    f = open(CLUSTERING_PATH + "report_ensemble_reduce_" + str(number_of_clusters) + ".txt", "w+")
+    f = open(MODEL_PATH + "report_ensemble_reduce_" + str(number_of_clusters) + ".txt", "w+")
     f.write("Total labelled water pixel count:" +
           str(len(np.argwhere(np.array(labels) == RosebelPixelClass3.water.value))) + '\n')
     f.write("Total labelled mines pixel count:" +

@@ -14,19 +14,20 @@ from sklearn import metrics
 # Self Defined Modules
 from ground_truth import RosebelPixelClass3, GroundTruthBoundaries
 
-PRODUCT_1A_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-PRODUCT_1B_PATH = "F:\FYP\Processed_Data\Rosebel_GRD\Subset_S1B_IW_GRDH_1SDV_20170902T215854_20170902T215945_007219_00CB9B_FFA6_Orb_NR_Cal_Asm_Spk_TF_TC.dim"
-CLASS_LABEL_FILENAME = "rosebel_3_class_labels_original.npy"
-SAVE_DIR = "F:\FYP\Processed_Data\Rosebel_GRD\\"
-PIN_EXPORT_FILEPATH = "F:\FYP\CG4001\esa_data_products_snap_processed\suriname_rosebel_all\ground_truth_vector_files\pin_exports\pin.txt"
+PRODUCT_1A_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+PRODUCT_1B_PATH = "..\\data\\processed\\Rosebel_GRD\\Subset_S1B_IW_GRDH_1SDV_20170902T215854_20170902T215945_007219_00CB9B_FFA6_Orb_NR_Cal_Asm_Spk_TF_TC.dim"
+CLASS_LABEL_FILENAME = "..\\data\\labels\\rosebel_grd_3_class_labels_original.npy"
+SAVE_DIR = "..\\results\\Rosebel_GRD\\"
+PIN_EXPORT_FILEPATH = "..\\data\\pins\\rosebel_grd_pins.txt"
 
-# PRODUCT_1A_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
-# PRODUCT_1B_PATH = "F:\FYP\Processed_Data\Obuasi\Subset_S1B_IW_GRDH_1SDV_20190209T181715_20190209T181740_014873_01BC28_A9A8_Orb_NR_Cal_Spk_TF_TC.dim"
-# CLASS_LABEL_FILENAME = "obuasi_3_class_labels_original.npy"
-# SAVE_DIR = "F:\FYP\Processed_Data\Obuasi\\"
-# PIN_EXPORT_FILEPATH = "C:\\Users\\royce\\Desktop\\obuasi_pins.txt"
+# PRODUCT_1A_PATH = "..\\data\\processed\\Obuasi\\Subset_S1A_IW_GRDH_1SDV_20190208T182602_20190208T182631_025842_02E01C_899E_Orb_NR_Cal_Spk_TF_TC_Gamma.dim"
+# PRODUCT_1B_PATH = "..\\data\\processed\\Obuasi\\Subset_S1B_IW_GRDH_1SDV_20190209T181715_20190209T181740_014873_01BC28_A9A8_Orb_NR_Cal_Spk_TF_TC.dim"
+# CLASS_LABEL_FILENAME = "..\\data\\labels\\obuasi_3_class_labels_original.npy"
+# SAVE_DIR = "..\\results\\Obuasi\\"
+# PIN_EXPORT_FILEPATH = "..\\data\\pins\\obuasi_pins.txt"
 
-CLUSTERING_PATH = "F:\FYP\CG4001\machine_learning\clustering_results\\"
+LABEL_PATH = "..\\data\\labels\\"
+MODEL_PATH = "..\\data\\models\\"
 
 def print_duration_string(start_time):
     t = time.time() - start_time
@@ -68,8 +69,8 @@ def export_results(gt_labels, prediction_label, save_filepath):
 if __name__ == "__main__":
     start_time = time.time()
 
-    if os.path.exists(SAVE_DIR + "rf_1A_1B_predictions.npy"):
-        rf_predictions = np.load(SAVE_DIR + "rf_1A_1B_predictions.npy")
+    if os.path.exists(LABEL_PATH + "rf_1A_1B_predictions.npy"):
+        rf_predictions = np.load(LABEL_PATH + "rf_1A_1B_predictions.npy")
     else:
         print("Reading product:" + PRODUCT_1A_PATH)
         p1A = ProductIO.readProduct(PRODUCT_1A_PATH)
@@ -136,7 +137,7 @@ if __name__ == "__main__":
             exit()
 
         print("Importing Random Forest model")
-        rf_model = joblib.load(CLUSTERING_PATH + "rf_R_O_M_g_model_balanced.joblib")
+        rf_model = joblib.load(MODEL_PATH + "rf_R_O_M_g_model_balanced.joblib")
         print("Predicting rf assignments for Sentinel 1A and 1B products")
         rf_1A_predictions = rf_model.predict(features_1A).astype(int)
         rf_1A_proba = rf_model.predict_proba(features_1A)
@@ -159,7 +160,7 @@ if __name__ == "__main__":
                     rf_predictions.append(RosebelPixelClass3.forest.value)
 
         rf_predictions = np.array(rf_predictions)
-        np.save(SAVE_DIR + "rf_1A_1B_predictions.npy", rf_predictions)
+        np.save(LABEL_PATH + "rf_1A_1B_predictions.npy", rf_predictions)
 
     print("Loading Ground Truth for results validation")
     labels = np.load(SAVE_DIR + CLASS_LABEL_FILENAME)

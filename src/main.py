@@ -468,11 +468,11 @@ if __name__ == "__main__":
     # Experiments Setup ------------------------------------------------------------------------------------------------
     START = str(int(time.time()))
     EXPERIMENTS_TITLE = "W13_Visualizations" + START
-    SINGLE_PRODUCT_PATH = "../esa_data_products_snap_processed/suriname_rosebel_all/Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
-    PINS_TEXT_FILE_PATH = "../esa_data_products_snap_processed/suriname_rosebel_all/ground_truth_vector_files/pin_exports/pin.txt"
-    PRE_COMPUTED_LABELS_PATH = "labels/rosebel_3_class_labels_original.npy"
+    SINGLE_PRODUCT_PATH = "..//data//processed//Subset_S1A_IW_GRDH_1SDV_20170903T092838_20170903T092903_018209_01E9A9_D2A2_Orb_NR_Cal_Spk_TC_GLCM.dim"
+    PINS_TEXT_FILE_PATH = "..//data//pins//rosebel_pins.txt"
+    PRE_COMPUTED_LABELS_PATH = "..//data//labels//rosebel_grd_3_class_labels_original.npy"
     CLASS_LABEL_ENUM = RosebelPixelClass3
-    RESULTS_FOLDER = "results/W13_Visualizations/"
+    RESULTS_FOLDER = "..//results//Rosebel_GRD//"
 
     print(EXPERIMENTS_TITLE)
     print("Products Used:\n", SINGLE_PRODUCT_PATH)
