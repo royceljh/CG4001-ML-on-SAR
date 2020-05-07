@@ -1,0 +1,31 @@
+Total labelled water pixel count:3039
+Total labelled mines pixel count:3248
+Total labelled forest pixel count:84296
+Confusion matrix: 
+[[ 3000    29    10]
+ [    0  3196    52]
+ [  187  6166 77943]]
+Overall accuracy score: 0.9288608237748806
+Classification report: 
+              precision    recall  f1-score   support
+
+           1       0.94      0.99      0.96      3039
+           2       0.34      0.98      0.51      3248
+           3       1.00      0.92      0.96     84296
+
+    accuracy                           0.93     90583
+   macro avg       0.76      0.97      0.81     90583
+weighted avg       0.97      0.93      0.94     90583
+
+
+water pixel prediction accuracy: 98.72%
+water pixels mis-predicted as mines: 0.95%
+water pixels mis-predicted as forest: 0.33%
+
+mines pixel prediction accuracy: 98.40%
+mines pixels mis-predicted as water: 0.00%
+mines pixels mis-predicted as forest: 1.60%
+
+forest pixel prediction accuracy: 92.46%
+forest pixels mis-predicted as water: 0.22%
+forest pixels mis-predicted as mines: 7.31%
